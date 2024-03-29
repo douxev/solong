@@ -1,0 +1,12 @@
+{
+	"files.associations": {
+		"solong.h": "c",
+		"mlx_int.h": "c",
+		"solong_bonus.h": "c",
+		"structs.h": "c",
+		"sprites.h": "c",
+		"gnl.h": "c",
+		"minilibft_int.h": "c"
+	},
+	"git.ignoreLimitWarning": true
+}
