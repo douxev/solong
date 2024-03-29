@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:44:46 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/12 18:55:35 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:28:50 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include "solong_defines.h"
 # include "minilibft.h"
 # include "mlx.h"
-
 
 # include <stdarg.h>
 # include <stdlib.h>
@@ -49,7 +48,7 @@ void	print_error(char *str, t_mlx *mlx);
 void	ft_map(t_mlx *mlx, char **map, int i, int j);
 void	ft_draw_surroundings(t_mlx *mlx, char **map);
 void	print_hud(t_mlx *mlx);
-
+void	*ft_calloc(size_t nmemb, size_t size);
 
 int		on_pressed(int keycode, t_mlx *mlx);
 int		key_is_up(t_mlx *mlx);
@@ -66,6 +65,8 @@ void	spwn_image(t_mlx *mlx, t_img *f, char *path);
 void	bzero_mlx(t_mlx *mlx);
 void	load_textures(t_mlx *mlx);
 int		on_destroy(t_mlx *mlx);
+void	kill_all_sprites(t_mlx *mlx);
+void	kill_sprite(t_mlx *mlx, t_img *sprite);
 
 void	init_map(t_mlx *mlx, const char *file);
 void	init_love(t_mlx *mlx);

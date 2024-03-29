@@ -6,16 +6,19 @@
 #    By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 16:11:15 by jdoukhan          #+#    #+#              #
-#    Updated: 2024/01/22 14:35:11 by jdoukhan         ###   ########.fr        #
+#    Updated: 2024/02/01 17:37:46 by jdoukhan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# if error suppressed then add XSizeHints    hints = {};
+# inside mlx_int_anti_resize_win at mlx_int_anti_resize_win.c
 
 ################################################################################
 #                                     CONFIG                                   #
 ################################################################################
 
 NAME = so_long
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 CC = cc
 
 ################################################################################
@@ -25,7 +28,7 @@ CC = cc
 COMMON_SOURCES = load_main_textures.c map_rendering.c \
 	spwn_image.c sprite_init.c sprite_emoji_init.c \
 	draw_fg.c draw_bg.c  transparency.c \
-	keys_main.c utils.c free_all.c \
+	keys_main.c utils.c free_all.c kill_all_sprites.c \
 	map_checks.c map_check_borders.c 
 
 M_SOURCES = main.c move_player.c key_handler.c events.c win_scene.c \
@@ -82,6 +85,7 @@ $(MLX_DIR):
 	@git clone https://github.com/42Paris/minilibx-linux
 
 $(MINILIBFT):
+	@mkdir -p objs objs/common objs/mandatory objs/bonus minilibft/objs
 	@make -C $(MINILIBFT_DIR) --no-print-directory
 
 clean:
@@ -93,6 +97,7 @@ fclean: clean
 	@echo "\033[0;91mCleaned exe ✔️\033[1;37m"
 
 ffclean: fclean
+	@rm -rf $(MLX_DIR)
 	@make -C minilibft fclean --no-print-directory
 
 re: fclean all

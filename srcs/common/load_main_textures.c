@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 19:13:54 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/12 18:08:38 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:10:02 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	bzero_img(t_mlx *mlx)
 void	bzero_mlx(t_mlx *mlx)
 {
 	mlx->event = -100;
+	mlx->map = NULL;
 	bzero_img(mlx);
 	mlx->mv = 0;
 	mlx->px = 0;

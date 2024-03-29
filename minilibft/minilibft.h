@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hud.c                                              :+:      :+:    :+:   */
+/*   minilibft.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:50:44 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/25 18:03:32 by jdoukhan         ###   ########.fr       */
+/*   Created: 2023/11/21 14:27:13 by jdoukhan          #+#    #+#             */
+/*   Updated: 2024/01/12 15:46:08 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#ifndef MINILIBFT_H
+# define MINILIBFT_H
+# include <stdio.h>
 
-void	print_hud(t_mlx *mlx)
-{
-	char	moves[4];
+int		ft_printf(const char *str, ...);
+char	*get_next_line(int fd);
+size_t	ft_strlen(char *str);
 
-	moves[3] = 0;
-	moves[2] = mlx->mv % 10 + 48;
-	moves[1] = mlx->mv / 10 % 10 + 48;
-	moves[0] = mlx->mv / 100 % 10 + 48;
-	mlx_string_put(mlx->ptr, mlx->win, 16, 24, 0x286473, moves);
-	mlx_string_put(mlx->ptr, mlx->win, 36, 24, 0x286473, "moves");
-	ft_printf("\033c%i moves | %i coins left.\n", (mlx->mv), mlx->coins);
-}
+#endif

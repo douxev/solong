@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hud.c                                              :+:      :+:    :+:   */
+/*   ft_ptr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 18:50:44 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/25 18:03:32 by jdoukhan         ###   ########.fr       */
+/*   Created: 2023/11/22 11:35:04 by jdoukhan          #+#    #+#             */
+/*   Updated: 2024/01/12 15:42:19 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "minilibft_int.h"
 
-void	print_hud(t_mlx *mlx)
+void	ft_ptr(void *ptr, size_t *z)
 {
-	char	moves[4];
-
-	moves[3] = 0;
-	moves[2] = mlx->mv % 10 + 48;
-	moves[1] = mlx->mv / 10 % 10 + 48;
-	moves[0] = mlx->mv / 100 % 10 + 48;
-	mlx_string_put(mlx->ptr, mlx->win, 16, 24, 0x286473, moves);
-	mlx_string_put(mlx->ptr, mlx->win, 36, 24, 0x286473, "moves");
-	ft_printf("\033c%i moves | %i coins left.\n", (mlx->mv), mlx->coins);
+	if (!ptr)
+	{
+		write(1, "(nil)", 5);
+		(*z) += 5;
+		return ;
+	}
+	write(1, "0x", 2);
+	(*z) += 2;
+	ft_nbaseu((size_t) ptr, "0123456789abcdef", z);
 }

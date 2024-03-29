@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 17:42:07 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/12 17:48:33 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:27:08 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	free_image(t_mlx *mlx, t_img *img)
 		free(img);
 }
 
-static void	kill_sprite(t_mlx *mlx, t_img *sprite)
+void	kill_sprite(t_mlx *mlx, t_img *sprite)
 {
 	if (sprite && sprite->n && sprite->n->n && sprite->n->n->n)
 		free_image(mlx, sprite->n->n->n);
@@ -45,17 +45,11 @@ static void	kill_sprite(t_mlx *mlx, t_img *sprite)
 
 static void	destroy_images(t_mlx *mlx)
 {
-	kill_sprite(mlx, mlx->tex.p1);
-	kill_sprite(mlx, mlx->tex.pnj1);
-	kill_sprite(mlx, mlx->tex.pnj2);
-	kill_sprite(mlx, mlx->tex.pnj3);
-	kill_sprite(mlx, mlx->tex.coins);
-	kill_sprite(mlx, mlx->tex.exit);
-	kill_sprite(mlx, mlx->tex.bath);
-	kill_sprite(mlx, mlx->tex.love);
-	kill_sprite(mlx, mlx->tex.money);
+	kill_all_sprites(mlx);
 	if (mlx->bg.img)
 		mlx_destroy_image(mlx->ptr, mlx->bg.img);
+	if (mlx->start.img)
+		mlx_destroy_image(mlx->ptr, mlx->start.img);
 	if (mlx->tex.start1.img)
 		mlx_destroy_image(mlx->ptr, mlx->tex.start1.img);
 	if (mlx->tex.start2.img)

@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:10:01 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/12 18:54:32 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:49:31 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	refresh(t_mlx *mlx)
 	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->bg.img, 0, 0);
 }
 
-static char	*process_file(t_mlx *mlx, char *path)
+static void	process_file(t_mlx *mlx, char *path)
 {
 	int	len;
 
@@ -39,24 +39,22 @@ static char	*process_file(t_mlx *mlx, char *path)
 	if ((len <= 3 || !(path[len] == 'r' && path[len - 1] == 'e'
 				&& path[len - 2] == 'b' && path[len - 3] == '.')))
 		print_error("File extension incorrect.", mlx);
-	return (path);
 }
 
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx;
-	char	*path;
 
 	bzero_mlx(&mlx);
 	mlx.event = 0;
 	if (argc != 2)
 		return (print_error("No map given.", &mlx), 0);
-	path = process_file(&mlx, argv[1]);
+	process_file(&mlx, argv[1]);
 	mlx.ptr = mlx_init();
 	if (!mlx.ptr)
 		return (1);
 	mlx.map = NULL;
-	init_map(&mlx, path);
+	init_map(&mlx, argv[1]);
 	if (!mlx.win)
 		return (free(mlx.ptr), 1);
 	ft_printf("\033c%i moves | %i coins left.\n", (mlx.mv), mlx.coins);

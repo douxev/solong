@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:23:34 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/12 17:48:53 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:24:03 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 void	is_map_too_big(t_mlx *mlx)
 {
 	if (mlx->height > 1080 || mlx->width > 1920)
+	{
+		get_next_line(-1);
 		print_error("Map is too big for the screen.", mlx);
+	}
 }
 
 void	check_border(t_mlx *mlx)

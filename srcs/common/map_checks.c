@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 10:35:09 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/12 19:14:14 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:12:54 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,8 @@ static void	item_occurrence(t_mlx *mlx, char **map)
 void	check_map(t_mlx *mlx)
 {
 	item_occurrence(mlx, mlx->map);
+	if (mlx->n.coins == 0)
+		print_error("At least 1 coin is needed.", mlx);
 	flood_fill(mlx);
 	if (mlx->n.exit != 1 || mlx->n.player != 1 || mlx->n.nmy > 3)
 		print_error("Too many items.", mlx);

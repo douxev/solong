@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:29:10 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/09 16:29:56 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/01/26 12:29:12 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@
 
 # define LOVE1 "./textures/XPMs/love1.xpm"
 # define LOVE2 "./textures/XPMs/love2.xpm"
-
 
 # define WALL "./textures/XPMs/wall.xpm"
 # define VWALL "./textures/XPMs/vwallR.xpm"

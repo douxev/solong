@@ -6,7 +6,7 @@
 /*   By: jdoukhan <jdoukhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 18:47:49 by jdoukhan          #+#    #+#             */
-/*   Updated: 2024/01/13 15:17:03 by jdoukhan         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:17:26 by jdoukhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,27 +101,27 @@ void	init_map(t_mlx *mlx, const char *file)
 {
 	int		fd;
 	int		k;
-	char	**map;
 
 	fd = open(file, O_RDONLY);
 	if (fd <= 0)
 		print_error("File couldn't be read.", mlx);
 	k = 0;
-	mlx->map = malloc(sizeof (char *) * 19);
+	mlx->map = ft_calloc(19, sizeof (char *) * 19);
 	if (!mlx->map)
 		print_error("Memory not allocated properly.", mlx);
-	map = mlx->map;
-	while (k < 1 || (k >= 1 && \
-		ft_strlen(map[0]) == ft_strlen(map[k - 1]) && k < 18))
+	while (k < 1 || (k >= 1 && mlx->map[k - 1] && \
+		ft_strlen(mlx->map[0]) == ft_strlen(mlx->map[k - 1]) && k < 18))
 	{
-		map[k] = get_next_line(fd);
-		if (!map[k++] && !close(fd))
-			print_error("Map incorrect.", mlx);
+		mlx->map[k] = get_next_line(fd);
+		if (!mlx->map[k++] && !close(fd))
+			print_error("mlx->Map incorrect.", mlx);
 	}
 	close(fd);
-	if (map[k] < 0)
+	if (k > 18)
+		(get_next_line(-1), print_error("Map too big.", mlx));
+	if (mlx->map[k] < 0)
 		print_error("Read Error.", mlx);
-	map[k] = NULL;
+	mlx->map[k] = NULL;
 	ft_len_map(mlx);
 	load_textures(mlx);
 }
